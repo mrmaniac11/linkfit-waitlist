@@ -45,8 +45,13 @@ const WaitlistForm = () => {
     setErrors({});
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await fetch('https://linkfit.app/api/waitlist/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email_address: email, user_name: instagramId }),
+      });
       setSubmitSuccess(true);
       // Reset form
       setEmail('');
